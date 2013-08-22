@@ -16,7 +16,14 @@ class DocParameters(object):
             """Takes (name, (type, doc)) converts to a param docstring line."""
             name, typedoc = nametypedoc
             return ":param {1} {0}: {2}".format(name, *typedoc)
+        rtype, rdoc = argtypes.pop('return', (None, None))
         paramlines = map(_paramline, six.iteritems(argtypes))
+
+        if rdoc:
+            paramlines.append(":return: {0}".format(rdoc))
+        if rtype:
+            paramlines.append(":rtype: {0}".format(rtype))
+
         self.doc = '\n'.join(paramlines)
 
     def __call__(self, function):
