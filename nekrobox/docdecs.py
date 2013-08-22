@@ -33,7 +33,7 @@ def params(**argtypes):
         if rdoc:
             paramlines.append(":return: {0}".format(rdoc))
         if rtype:
-            paramlines.append(":rtype: {0}".format(rtype))
+            paramlines.append(":rtype: {0}".format(rtype.__name__))
 
         doc = '\n'.join(paramlines)
 

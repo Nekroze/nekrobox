@@ -15,10 +15,13 @@ class TestNekrobox(object):
         @docdecs.params(word=(str, 'echo this word'))
         def echo(word):
             return word
+        assert echo.__doc__ == ":param str word: echo this word"
 
-        @docdecs.params(input=(str, 'input to make lowercase'),
-                        returns=(str, 'lowercase version of input'))
+    def test_params_with_return_type_doc(self):
+        @docdecs.params(text=(str, 'text to make lowercase'),
+                        returns=(str, 'lowercase version of text'))
         def lowercase(text):
             return text.lower()
-
-        assert echo.__doc__ == ":param str word: echo this word"
+        assert lowercase.__doc__ == """:param str text: text to make lowercase
+:return: lowercase version of text
+:rtype: str"""
