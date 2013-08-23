@@ -19,7 +19,7 @@ def params(**argtypes):
                 returns=(str, "lowercase string"))
         def lowercase(input):
             return input.lower()
-    
+
     .. seealso:: For example output see :py:func:`params_example`
     """
     def modify(function):
