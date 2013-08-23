@@ -20,7 +20,7 @@ def params(**argtypes):
         def lowercase(input):
             return input.lower()
     
-    .. seealso:: For example output see :py:function:`params_example`
+    .. seealso:: For example output see :py:func:`params_example`
     """
     def modify(function):
         def paramline(name, atype, doc):
