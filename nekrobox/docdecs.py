@@ -15,8 +15,8 @@ def params(**argtypes):
     to identify the returned type and documentation. The following is an
     example of how to use `docparams` to automatically document arguments::
 
-        @docparams(input=(str, "string to be made lowercase.")
-                   returns=(str, "lowercase string"))
+        @params(input=(str, "string to be made lowercase.")
+                returns=(str, "lowercase string"))
         def lowercase(input):
             return input.lower()
     """
