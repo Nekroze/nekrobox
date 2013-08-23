@@ -13,7 +13,7 @@ Contents:
 
    installation
    usage
-   modules
+   nekrobox
    contributing
    authors
    history
