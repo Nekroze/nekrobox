@@ -20,6 +20,11 @@ def params(**argtypes):
         def lowercase(input):
             return input.lower()
 
+    This decorator subverts the normal way decorators work to modify what is
+    decorated without incuring extra overhead at call time. This means that the
+    decorated function is not wrapped as a normal decorated function is, simply
+    altered.
+
     .. seealso:: For example output see :py:func:`params_example`
     """
     def modify(function):
