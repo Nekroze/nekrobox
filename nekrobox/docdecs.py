@@ -42,3 +42,8 @@ def params(**argtypes):
             function.__doc__ = doc
         return function
     return modify
+
+
+@params((text=(str, "string to make lowercase"), returns=(str, "lowercased text"))
+def param_example(text):
+    return text.lower()
