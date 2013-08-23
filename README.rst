@@ -12,18 +12,20 @@ nekrobox
         :target: https://crate.io/packages/nekrobox?version=latest
 
 
-A utilities library by Nekroze.
+A utilities library by Nekroze. The idea is to provide general purpose
+utilities for free usage.
 
 Quickstart
 ----------
 
-Install nekrobox::
+Install nekrobox at the command line using pip or easy_install::
 
     $ pip install nekrobox
+    $ easy_install nekrobox
 
-Then use it in a project::
+Then use it in a project by simply importing it::
 
-	import nekrobox
+    import nekrobox
 
 Features
 --------
