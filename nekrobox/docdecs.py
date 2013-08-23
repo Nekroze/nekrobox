@@ -3,7 +3,6 @@ A collection of decorators for automatically decorating functions and methods
 with sphinx documentation tags.
 """
 import six
-from six.moves import map
 
 
 def params(**argtypes):
@@ -22,13 +21,13 @@ def params(**argtypes):
             return input.lower()
     """
     def modify(function):
-        def paramline(nametypedoc):
-            """Takes (name, (type, doc)) converts to a param docstring line."""
-            name, (atype, doc) = nametypedoc
+        def paramline(name, atype, doc):
+            """Takes name, atype nd doc converts to a param docstring line."""
             return ":param {1} {0}: {2}".format(name, atype.__name__, doc)
 
         rtype, rdoc = argtypes.pop("returns", (None, None))
-        paramlines = list(map(paramline, six.iteritems(argtypes)))
+        paramlines = [paramline(name, atype, doc) for name, (atype, doc) in
+                      six.iteritems(argtypes)]
 
         if rdoc:
             paramlines.append(":return: {0}".format(rdoc))
