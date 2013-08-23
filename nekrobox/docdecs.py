@@ -30,9 +30,9 @@ def params(**argtypes):
                       six.iteritems(argtypes)]
 
         if rdoc:
-            paramlines.append(":return: {0}".format(rdoc))
+            paramlines.append(":return: " + rdoc)
         if rtype:
-            paramlines.append(":rtype: {0}".format(rtype.__name__))
+            paramlines.append(":rtype: " + rtype.__name__)
 
         doc = '\n'.join(paramlines)
 
