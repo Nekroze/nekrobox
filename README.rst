@@ -28,4 +28,4 @@ Then use it in a project::
 Features
 --------
 
-* TODO
+* Decorator to help generate sphinx compatible docstrings
