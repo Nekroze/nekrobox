@@ -33,7 +33,7 @@ class PyTest(TestCommand):
 readme = open('README.rst').read()
 doclink = """
 Documentation
-=============
+-------------
 
 The full documentation is at http://nekrobox.rtfd.org."""
 history = open('HISTORY.rst').read().replace('.. :changelog:', '')
