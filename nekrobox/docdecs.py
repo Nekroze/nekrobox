@@ -44,7 +44,7 @@ def params(**argtypes):
         doc = '\n'.join(paramlines)
 
         if function.__doc__:
-            function.__doc__ = doc + function.__doc__
+            function.__doc__ = doc + "\n\n" +  function.__doc__
         else:
             function.__doc__ = doc
         return function
@@ -54,4 +54,5 @@ def params(**argtypes):
 @params(text=(str, "string to make lowercase"),
         returns=(str, "lowercased text"))
 def params_example(text):
+    """This is a docstring."""
     return text.lower()
