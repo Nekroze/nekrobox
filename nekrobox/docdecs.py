@@ -38,13 +38,13 @@ def params(**argtypes):
             return "{3}:param {1} {0}: {2}".format(name, atype.__name__, doc, prefix)
 
         rtype, rdoc = argtypes.pop("returns", (None, None))
-        paramlines = [paramline(name, atype, doc) for name, (atype, doc) in
-                      six.iteritems(argtypes)]
-
+        paramlines = []
         if rdoc:
             paramlines.append(":return: " + rdoc)
         if rtype:
             paramlines.append(":rtype: " + rtype.__name__)
+        paramlines.extend([paramline(name, atype, doc) for name, (atype, doc) in
+                           six.iteritems(argtypes)])
 
         doc = '\n'.join(paramlines)
 
