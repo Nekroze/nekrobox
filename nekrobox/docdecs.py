@@ -28,9 +28,14 @@ def params(**argtypes):
     .. seealso:: For example output see :py:func:`params_example`
     """
     def modify(function):
+        fdoc = function.__doc__
+        prefix = ""
+        if fdoc:
+            prefix = " " * len(fdoc) - len(fdoc.lstrip())
+
         def paramline(name, atype, doc):
             """Takes name, atype nd doc converts to a param docstring line."""
-            return ":param {1} {0}: {2}".format(name, atype.__name__, doc)
+            return "{3}:param {1} {0}: {2}".format(name, atype.__name__, doc, prefix)
 
         rtype, rdoc = argtypes.pop("returns", (None, None))
         paramlines = [paramline(name, atype, doc) for name, (atype, doc) in
@@ -43,8 +48,8 @@ def params(**argtypes):
 
         doc = '\n'.join(paramlines)
 
-        if function.__doc__:
-            function.__doc__ = doc + "\n\n" +  function.__doc__
+        if fdoc:
+            function.__doc__ = doc + "\n\n" +  fdoc
         else:
             function.__doc__ = doc
         return function
