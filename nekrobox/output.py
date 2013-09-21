@@ -86,6 +86,7 @@ def redirect_stdout(filepath=None):
             with pipe_stdout(filepath):
                 function(*args, **kwargs)
         return wrapper
+    return _wrap
 
 
 def redirect_stderr(filepath=None):
@@ -101,6 +102,7 @@ def redirect_stderr(filepath=None):
             with pipe_stderr(filepath):
                 function(*args, **kwargs)
         return wrapper
+    return _wrap
 
 
 def redirect_std(filepath=None):
@@ -116,3 +118,4 @@ def redirect_std(filepath=None):
             with pipe_std(filepath):
                 function(*args, **kwargs)
         return wrapper
+    return _wrap
