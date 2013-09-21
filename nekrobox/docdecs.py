@@ -31,7 +31,7 @@ def params(**argtypes):
         fdoc = function.__doc__
         prefix = ""
         if fdoc:
-            prefix = " " * len(fdoc) - len(fdoc.lstrip())
+            prefix = " " * (len(fdoc) - len(fdoc.lstrip()))
 
         def paramline(name, atype, doc):
             """Takes name, atype nd doc converts to a param docstring line."""
