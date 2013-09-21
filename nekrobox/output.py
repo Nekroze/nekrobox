@@ -6,9 +6,9 @@ from functools import wraps
 def get_filelike(filepath=None):
     """
     Convert a filepath into a, hopefully, appropriate file like object.
-    
-    If ``filepath`` is ``None`` then a null file like object will be returned that
-    be written to but does nothing.
+
+    If ``filepath`` is ``None`` then a null file like object will be returned
+    that be written to but does nothing.
 
     If ``filepath`` is a string then a file object will be opened using
     ``filepath`` as the path to the file.
@@ -18,7 +18,8 @@ def get_filelike(filepath=None):
     """
     if not filepath:
         class Devnull(object):
-            def write(self, _): pass
+            def write(self, _):
+                pass
         return Devnull()
     elif isinstance(filepath, str):
         return open(filepath, 'w')
@@ -33,10 +34,10 @@ def pipe_stdout(filepath=None):
     through :py:func:`get_filelike`.
 
     This can be used like so::
-    >>> with pipe_stdout():
-    >>>     print("This will go no where!")
+        with pipe_stdout():
+            print("This will go no where!")
     """
-    sys.stdout = _get_filelike(filepath)
+    sys.stdout = get_filelike(filepath)
     yield
     sys.stdout = sys.__stdout__
 
@@ -49,7 +50,7 @@ def pipe_stderr(filepath=None):
 
     This can be used similarly to :py:func:`pipe_stdout`.
     """
-    sys.stderr = _get_filelike(filepath)
+    sys.stderr = get_filelike(filepath)
     yield
     sys.stderr = sys.__stderr__
 
@@ -62,7 +63,7 @@ def pipe_std(filepath=None):
 
     This can be used similarly to :py:func:`pipe_stdout`.
     """
-    output = _get_filelike(filepath)
+    output = get_filelike(filepath)
     sys.stdout = output
     sys.stderr = output
     yield
@@ -76,9 +77,9 @@ def redirect_stdout(filepath=None):
     through :py:func:`get_filelike`.
 
     This can be used on method or functions::
-    >>> @redirect_stdout():
-    >>> def foo():
-    >>>     print("This will go no where!")
+        @redirect_stdout():
+        def foo():
+            print("This will go no where!")
     """
     def _wrap(function):
         @wraps(function)
