@@ -19,8 +19,18 @@ class TestConfigLoader():
         assert tree.path_walker(testtree, "test tree".split()) == (10, [])
         assert tree.path_walker(testtree, "test tree something".split()) == (10, ["something"])
         assert tree.path_walker(testtree, "something tree".split()) == (5, ["tree"])
+
         with pytest.raises(KeyError):
             tree.path_walker(testtree, "nothing".split())
 
         with pytest.raises(KeyError):
             tree.path_walker(testtree, "test nothing".split())
+
+        try:
+            raised = False
+            tree.path_walker(testtree, "test nothing".split())
+        except KeyError as e:
+            raised = True
+            assert e.args[0] == "nothing"
+        assert raised
+            
