@@ -1,7 +1,7 @@
 from .docdecs import params
 
 
-@params(layers=(dict, "Dict tree of commands"),
+@params(layers=(dict, "Dictionary tree"),
         path=(list, "Path to walk down"),
         returns=(tuple, "The leaf and remainder of the path."))
 def path_walker(layers, path):
@@ -17,3 +17,24 @@ def path_walker(layers, path):
         return path_walker(branch, tail)
     else:
         return (branch, tail)
+
+
+@params(tree=(dict, "Dictionary tree to modify"),
+        path=(list, "Branch path to add the ``leaf`` too"),
+        key=(object, "Key for the new leaf"),
+        leaf=(object, "To be added to the tree. This should not be a dict."),
+        returns=(dict, "Returns the modified tree"))
+def tree_add(tree, path, key, leaf):
+    """Add a new leaf to the tree.
+    
+    Adds the given ``leaf`` object to the ``tree`` under the given ``path`` 
+    which will be constructed as needed.
+    """
+    branch = tree
+    for item in path:
+        if not item in branch:
+            branch[item] = {}
+        branch = branch[item]
+
+    branch[key] = leaf
+    return tree

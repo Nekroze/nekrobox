@@ -33,4 +33,11 @@ class TestConfigLoader():
             raised = True
             assert e.args[0] == "nothing"
         assert raised
-            
+
+    def test_tree_add(self):
+        expected = {"test": {"tree": {"something": 10}}}
+        assert tree.tree_add({}, "test tree".split(), "something", 10) == expected
+
+        testtree = {}
+        tree.tree_add(testtree, ["test"], "something", 5)
+        assert testtree == {"test": {"something": 5}}
