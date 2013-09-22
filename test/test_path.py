@@ -12,7 +12,7 @@ import pytest
 from nekrobox import path
 
 
-class TestConfigLoader():
+class TestPath():
 
     def test_backpaths(self):
         paths = list(path.backpaths("/home/nekroze/git/eden"))
