@@ -44,7 +44,7 @@ def params(**argtypes):
         doc = '\n'.join(paramlines)
 
         if function.__doc__:
-            function.__doc__ = function.__doc__ + "\n\n" +  doc
+            function.__doc__ = function.__doc__ + "\n\n" + doc
         else:
             function.__doc__ = doc
         return function
