@@ -26,8 +26,8 @@ def path_walker(layers, path):
         returns=(dict, "Returns the modified tree"))
 def tree_add(tree, path, key, leaf):
     """Add a new leaf to the tree.
-    
-    Adds the given ``leaf`` object to the ``tree`` under the given ``path`` 
+
+    Adds the given ``leaf`` object to the ``tree`` under the given ``path``
     which will be constructed as needed.
     """
     branch = tree
